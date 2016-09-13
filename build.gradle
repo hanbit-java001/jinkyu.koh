@@ -1,11 +1,16 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
 
-sourceCompatibility = 1.5
-version = '1.0'
+compileJava {
+	sourceCompatibility = 1.8
+	options.encoding = 'UTF-8'
+}
+
+version = '1.0.0'
+
 jar {
     manifest {
-        attributes 'Implementation-Title': 'Gradle Quickstart',
+        attributes 'Implementation-Title': 'Hanbit Scheduler',
                    'Implementation-Version': version
     }
 }
@@ -16,6 +21,12 @@ repositories {
 
 dependencies {
     compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+
+    // https://mvnrepository.com/artifact/org.springframework/spring-context
+	compile group: 'org.springframework', name: 'spring-context', version: '4.3.2.RELEASE'
+
+    compile files('libs/ojdbc6.jar')
+
     testCompile group: 'junit', name: 'junit', version: '4.+'
 }
 
