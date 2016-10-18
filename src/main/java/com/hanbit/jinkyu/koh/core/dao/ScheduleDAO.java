@@ -1,17 +1,25 @@
 package com.hanbit.jinkyu.koh.core.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import  com.hanbit.jinkyu.koh.core.vo.ScheduleVO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
+import com.hanbit.jinkyu.koh.core.vo.ScheduleVO;
+
+@Repository
 public class ScheduleDAO extends AbstarctDAO {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(ScheduleDAO.class);
+
 	public int insertSchedule(ScheduleVO schedule) {
+		LOGGER.debug("인서트 스케줄");
+
 		Connection connection = getConnection();
 
 		String sql = "INSERT INTO SCHEDULE (SCHEDULE_ID, TITLE, MEMO, START_DT, END_DT) "
